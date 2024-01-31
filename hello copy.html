@@ -1,0 +1,156 @@
+<html>
+<body>
+	<canvas width="600" height="600"> </canvas>
+
+	<script>
+		// DECLARING VARIABLES FOR A FILLED IN SQUARE 
+		let canvas = document.querySelector('canvas');
+		let context = canvas.getContext('2d');
+		
+
+		// another way of declaring varibles, apart of 'let', is 'const' which stands for constant - we use it for variables that won't change.
+		const gravity = 9.81;
+		let velocity = 0.0;
+
+
+		//DRAWING A FILLED IN SQUARE
+		context.fillStyle = 'purple';
+		context.fillRect(100,100,400,400);
+
+		//DRAWING THE OUTLINE OF A SQUARE
+		context.lineWidth = 4; //width of the line
+		context.beginPath(); //telling context we are starting a new shape or new path
+		context.rect(100,100,400,400);//tell  context we want to draw square without filling it 
+		context.stroke();//decide filling it or just draw the outline  
+
+
+		//DRAWING A CIRCLE
+		context.beginPath();
+		context.arc(300, 300, 100, 0, Math.PI * 2);
+		context.stroke();
+
+
+
+
+		//EVERYTHING BELOW HERE IS AN EXPLANATION OF HOW FUNCTIONS AND VARIABLES WORK
+		// WITH STRINGS AND VALUES, OUTPUTTING THE ACTIONS AND MORE
+		let Year = 2022; //<- THIS IS HOW VARIABLES ARE DECLARE "LET" = WHATEVER
+		//let NextYear = Year + 1;
+
+		let dinner = 'pasta';
+		//let sentence = "tonight's dinner will be " + dinner;
+
+		//function saySomething (param) { //FUNCTIONS = ACTION IN THIS CASE SAYSOMETHING
+		//	console.log(param); 			// DECLARING WHAT THE ACTION WILL DO WHICH IS LINKED TO LINE 39 
+
+		//}
+
+		//saySomething (sentence);	//LINKED TO LINE 32 DECLARING VARIABLE SENTENCE TO BE "TONIGHT'S DINNER IS + DINNER"
+
+		//function add (a,b) {
+		//	return a+b;
+
+		//}
+
+		//let result = add (5,7);
+		//console.log(result);
+
+
+		//let multiply = (a,b) => {
+		//	return a*b;
+		//}
+
+		//console.log(multiply(5,7));
+
+
+		//ARRAYS AND LOOPS 
+		// arrays are lists, they are named within [] and can be numerical or integers
+		// example:
+		let yearlist = [];
+		let menu = [dinner, 'salad', 'steak','cheesecake', 'coke'];
+
+		// loops are codes that run over and over again
+		// for that to happen you have to set conditions called expression to control the loop
+		// this expression is made up of 3 parts 
+		// declare a variable to be the index = i
+		// declare the duration of the loop = whiles i is less than 4 then keep going 
+		// declare what happens to i in every iteration of the loop = increment by 1 so i++
+		// example:
+
+		for (let i = 0; i < menu.length; i ++) { 
+		//if you change the 4 by menu.length it will run untill there are no more items in that array so if the array increases or decreases it won't affect the code's output
+			console.log(menu[i]);
+
+		}
+
+		// can also use loops to add items into arrays
+		// example:
+		for (let i = 0; i<10; i++){
+			yearlist.push(2022 +i);
+
+		}
+		console.log(yearlist);
+
+		menu.forEach(item => {
+			console.log(item);
+			
+		})
+
+
+
+
+
+
+		//DRAW LOOP
+		const width = 60;
+		const gap = 25;
+		const height = 60;
+		let x,y;
+
+
+		// can also use loops to draw
+		for (let i= 0; i<5; i++) {
+			// nested loop, for loop inside another for loop
+			// examples
+			for(let j = 0; j< 5; j++){
+
+				x = 100+ (width +gap)* i;
+				y = 100 + (height + gap) *j;
+
+				context.beginPath();
+				context.rect(x, y, width, height );
+				context.stroke();
+
+				//smaller squares inside some of the small quares (condition) if something do this else do something else (dont always need an else)
+
+				//if (i > 0 && i < 4){
+
+				//i moved the code that draws the smaller squares here, if not it won't run the code and continue to draw the squares within all the small squares
+
+				if (Math.random()> 0.5){
+					context.beginPath();
+					context.rect(x + 8, y + 8, width - 16, height - 16);
+					context.stroke();	
+					//smaller squares inside all the small squares
+					//RANDOM NUMBERS
+					// Math.random - returns random number between 1 and 10, generative design
+					// let's try it in the if condition loop to see what the computer will randomly generate 
+				}
+
+			}
+
+		}
+
+		
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
